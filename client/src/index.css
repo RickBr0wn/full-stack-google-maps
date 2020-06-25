@@ -31,3 +31,35 @@ h1 {
   z-index: 2;
   color: #eceff1;
 }
+
+.search {
+  position: absolute;
+  top: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 2;
+  outline: none;
+}
+
+.search input {
+  padding: 1.2rem;
+  font-size: 2.4rem;
+  width: 100%;
+}
+
+.locate {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  background: none;
+  border: none;
+  z-index: 2;
+  outline: none;
+}
+
+.locate span {
+  font-size: 6.4rem;
+  cursor: pointer;
+}
