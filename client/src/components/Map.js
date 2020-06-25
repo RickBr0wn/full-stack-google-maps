@@ -40,7 +40,19 @@ const center = {
 
 const Locate = ({ panTo }) => {
   return (
-    <button className="locate">
+    <button
+      className="locate"
+      onClick={() => {
+        navigator.geolocation.getCurrentPosition(
+          position =>
+            panTo({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            }),
+          err => console.log(err),
+          { enableHighAccuracy: true }
+        )
+      }}>
       <span role="img" aria-label="compass">
         🧭
       </span>
@@ -119,7 +131,7 @@ const Map = () => {
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng })
-    mapRef.current.setZoom(16)
+    mapRef.current.setZoom(12)
   }, [])
 
   if (loadError) return 'Error loading Google Maps 🗺'
@@ -137,7 +149,7 @@ const Map = () => {
       <Locate panTo={panTo} />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={15}
+        zoom={10}
         center={center}
         options={options}
         onClick={onMapClick}
